@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080808" />
+  <meta name="description" content="Barbearia Roger Costta — experiência premium de corte, barba e estilo." />
+  <title>Barbearia Roger Costta</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Three.js + GSAP via CDN. O site continua funcional sem 3D caso a CDN falhe. -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="cursor-glow"></div>
+  <div class="page-loader">
+    <div class="loader-mark">RC</div>
+    <div class="loader-line"><span></span></div>
+    <small>BARBEARIA ROGER COSTTA</small>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#" data-action="home" aria-label="Barbearia Roger Costta">
+      <span class="brand-symbol">RC</span>
+      <span class="brand-text"><strong>ROGER COSTTA</strong><small>BARBEARIA</small></span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Navegação principal">
+      <button data-modal="services">Serviços</button>
+      <button data-modal="barbers">Barbeiros</button>
+      <button data-modal="gallery">Galeria</button>
+      <button data-modal="about">Sobre</button>
+      <button data-modal="contact">Contato</button>
+    </nav>
+
+    <button class="header-cta" data-booking>Agendar horário <span>↗</span></button>
+    <button class="menu-toggle" aria-label="Abrir menu"><span></span><span></span></button>
+  </header>
+
+  <div class="mobile-menu">
+    <div class="mobile-menu-inner">
+      <small>MENU</small>
+      <button data-modal="services">01 — Serviços</button>
+      <button data-modal="barbers">02 — Barbeiros</button>
+      <button data-modal="gallery">03 — Galeria</button>
+      <button data-modal="about">04 — Sobre</button>
+      <button data-modal="contact">05 — Contato</button>
+      <button class="mobile-booking" data-booking>Agendar horário <span>↗</span></button>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-media">
+        <!-- TROQUE A FOTO PRINCIPAL AQUI: images/banner-barbearia.png -->
+        <img src="images/banner-barbearia.png" alt="Fachada da Barbearia Roger Costta" />
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> ESTILO QUE FALA POR VOCÊ</div>
+        <h1>Seu estilo.<br><em>Sua assinatura.</em></h1>
+        <p>Uma experiência de barbearia pensada para quem valoriza presença, precisão e personalidade.</p>
+        <div class="hero-actions">
+          <button class="btn btn-gold" data-booking>Agendar horário <span>↗</span></button>
+          <button class="btn btn-ghost" data-modal="about">Conhecer a barbearia <span>↓</span></button>
+        </div>
+      </div>
+
+      <div class="hero-meta">
+        <span>51 98474-9346</span>
+        <span class="meta-divider"></span>
+        <span>@barbearia_rogercostta</span>
+      </div>
+
+      <div class="hero-scroll"><span>SCROLL</span><i></i></div>
+
+      <div class="hero-3d" aria-hidden="true">
+        <canvas id="scissor-canvas"></canvas>
+        <div class="object-label">PRECISÃO<br><b>EM CADA DETALHE</b></div>
+      </div>
+    </section>
+
+    <section class="statement reveal">
+      <div class="statement-number">01</div>
+      <div class="statement-main">
+        <p class="kicker">A EXPERIÊNCIA</p>
+        <h2>Não é apenas um corte.<br><span>É a forma como você chega.</span></h2>
+      </div>
+      <p class="statement-side">Ambiente, atendimento e técnica se encontram em uma experiência feita para desacelerar — e sair diferente.</p>
+    </section>
+
+    <section class="photo-band reveal" data-parallax>
+      <!-- TROQUE A FOTO DO AMBIENTE AQUI: images/interior-barbearia.png -->
+      <img src="images/interior-barbearia.png" alt="Interior da Barbearia Roger Costta" />
+      <div class="photo-band-overlay"></div>
+      <div class="photo-caption">
+        <span>ROGER COSTTA</span>
+        <strong>POR DENTRO<br>DA EXPERIÊNCIA</strong>
+      </div>
+      <button class="round-action" data-modal="gallery" aria-label="Abrir galeria">↗</button>
+    </section>
+
+    <section class="services-preview reveal">
+      <div class="section-top">
+        <div>
+          <p class="kicker">02 / SERVIÇOS</p>
+          <h2>Precisão no corte.<br><span>Personalidade no resultado.</span></h2>
+        </div>
+        <button class="text-link" data-modal="services">Ver todos <span>↗</span></button>
+      </div>
+
+      <div class="service-grid">
+        <article class="service-card" data-service="Corte">
+          <div class="service-index">01</div>
+          <div class="service-icon">✂</div>
+          <h3>Corte</h3>
+          <p>Do clássico ao contemporâneo, com acabamento preciso.</p>
+          <div class="service-footer"><span>R$ XX</span><small>30 MIN</small></div>
+          <button class="card-action" data-service-book="Corte">Agendar <span>↗</span></button>
+        </article>
+
+        <article class="service-card" data-service="Barba">
+          <div class="service-index">02</div>
+          <div class="service-icon">⌁</div>
+          <h3>Barba</h3>
+          <p>Desenho, alinhamento e acabamento para valorizar seu rosto.</p>
+          <div class="service-footer"><span>R$ XX</span><small>30 MIN</small></div>
+          <button class="card-action" data-service-book="Barba">Agendar <span>↗</span></button>
+        </article>
+
+        <article class="service-card featured" data-service="Corte + Barba">
+          <div class="service-index">03</div>
+          <div class="service-icon">✂︎</div>
+          <h3>Corte + Barba</h3>
+          <p>A experiência completa para sair renovado.</p>
+          <div class="service-footer"><span>R$ XX</span><small>60 MIN</small></div>
+          <button class="card-action" data-service-book="Corte + Barba">Agendar <span>↗</span></button>
+        </article>
+
+        <article class="service-card" data-service="Sobrancelha">
+          <div class="service-index">04</div>
+          <div class="service-icon">⌁</div>
+          <h3>Sobrancelha</h3>
+          <p>Acabamento discreto para completar o visual.</p>
+          <div class="service-footer"><span>R$ XX</span><small>15 MIN</small></div>
+          <button class="card-action" data-service-book="Sobrancelha">Agendar <span>↗</span></button>
+        </article>
+      </div>
+    </section>
+
+    <section class="immersive-panel reveal">
+      <div class="immersive-image">
+        <!-- TROQUE A FOTO SECUNDÁRIA AQUI: images/reception-barbearia.png -->
+        <img src="images/reception-barbearia.png" alt="Detalhes do interior da Barbearia Roger Costta" />
+      </div>
+      <div class="immersive-copy">
+        <p class="kicker">03 / O ESPAÇO</p>
+        <h2>Um ambiente<br><em>feito para você.</em></h2>
+        <p>Textos institucionais podem ser inseridos aqui depois. Esta área já está preparada para contar a história, os valores e o posicionamento da Barbearia Roger Costta sem inventar informações.</p>
+        <button class="btn btn-outline" data-modal="about">Conhecer o espaço <span>↗</span></button>
+      </div>
+    </section>
+
+    <section class="barbers-preview reveal">
+      <div class="section-top">
+        <div>
+          <p class="kicker">04 / EQUIPE</p>
+          <h2>Quem cuida<br><span>do seu estilo.</span></h2>
+        </div>
+        <button class="text-link" data-modal="barbers">Ver equipe <span>↗</span></button>
+      </div>
+
+      <div class="barber-strip">
+        <article class="barber-card" data-modal="barbers">
+          <div class="silhouette"><div class="head"></div><div class="body"></div></div>
+          <span>BARBEIRO 01</span>
+          <small>ESPECIALIDADE</small>
+        </article>
+        <article class="barber-card" data-modal="barbers">
+          <div class="silhouette"><div class="head"></div><div class="body"></div></div>
+          <span>BARBEIRO 02</span>
+          <small>ESPECIALIDADE</small>
+        </article>
+        <article class="barber-card" data-modal="barbers">
+          <div class="silhouette"><div class="head"></div><div class="body"></div></div>
+          <span>BARBEIRO 03</span>
+          <small>ESPECIALIDADE</small>
+        </article>
+        <article class="barber-card" data-modal="barbers">
+          <div class="silhouette"><div class="head"></div><div class="body"></div></div>
+          <span>BARBEIRO 04</span>
+          <small>ESPECIALIDADE</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="instagram-section reveal">
+      <div class="insta-mark">◎</div>
+      <p class="kicker">05 / INSTAGRAM</p>
+      <h2>@barbearia_<span>rogercostta</span></h2>
+      <p>Acompanhe os trabalhos, detalhes e novidades da barbearia.</p>
+      <a class="btn btn-gold" href="https://instagram.com/barbearia_rogercostta" target="_blank" rel="noopener">Ver Instagram <span>↗</span></a>
+    </section>
+
+    <section class="contact-band reveal">
+      <div>
+        <p class="kicker">06 / CONTATO</p>
+        <h2>Seu próximo<br><em>visual começa aqui.</em></h2>
+      </div>
+      <div class="contact-details">
+        <div><small>WHATSAPP</small><a href="https://wa.me/5551984749346" target="_blank" rel="noopener">51 98474-9346 ↗</a></div>
+        <div><small>INSTAGRAM</small><a href="https://instagram.com/barbearia_rogercostta" target="_blank" rel="noopener">@barbearia_rogercostta ↗</a></div>
+        <div><small>ENDEREÇO</small><p>Preencher endereço</p></div>
+        <div><small>HORÁRIO</small><p>Preencher horário</p></div>
+      </div>
+      <button class="btn btn-light" data-booking>Agendar horário <span>↗</span></button>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand"><span class="brand-symbol">RC</span><span>BARBEARIA ROGER COSTTA</span></div>
+    <p>© 2026 Roger Costta. Experiência, estilo e precisão.</p>
+    <button data-modal="contact">Contato ↗</button>
+  </footer>
+
+  <button class="floating-whatsapp" aria-label="Falar no WhatsApp" onclick="window.open('https://wa.me/5551984749346','_blank')">
+    <span class="wa-dot"></span> WhatsApp
+  </button>
+
+  <!-- Generic modal -->
+  <div class="modal-shell" id="content-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-window">
+      <button class="modal-close" data-close-modal aria-label="Fechar">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Booking modal -->
+  <div class="booking-shell" id="booking-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-booking></div>
+    <div class="booking-window">
+      <div class="booking-head">
+        <div><small>AGENDAMENTO</small><h2>Seu horário.</h2></div>
+        <button class="modal-close" data-close-booking aria-label="Fechar">×</button>
+      </div>
+      <div class="booking-progress">
+        <span class="active">01</span><i></i><span>02</span><i></i><span>03</span><i></i><span>04</span><i></i><span>05</span>
+      </div>
+      <div id="booking-content"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
